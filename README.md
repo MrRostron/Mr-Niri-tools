@@ -31,3 +31,6 @@ chmod +x toucpad_toggle
    python touchpad_toggle.py
    ```
 3. Or set to a keybinding
+```
+Mod+Alt+T { spawn "/path/to/touchpad_toggle.py" }
+```
