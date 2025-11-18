@@ -37,10 +37,14 @@ def write_config(path: Path, config: list) -> None:
 
 def toggle_on_off(line_num: int, contents: list) -> list:
     toggle = contents[line_num]
-    if toggle == "        // off // toggleOffTouchpad\n":
-        toggle = "           off // toggleOffTouchpad\n"
+    leading_spaces = len(toggle) - len(toggle.lstrip())
+    indent = "" * leading_spaces
+    if "// off // toggleOffTouchpad" in toggle:
+        toggle = f"{indent}off // toggleOffTouchpad\n"
     else:
-        toggle = "        // off // toggleOffTouchpad\n"
+        # Disable touchpad: add comment, keep same indentation
+        toggle = f"{indent}// off // toggleOffTouchpad\n"
+
     contents[line_num] = toggle
     return contents
 
