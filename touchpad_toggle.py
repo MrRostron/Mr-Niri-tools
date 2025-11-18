@@ -36,6 +36,8 @@ def write_config(path: Path, config: list) -> None:
 
 
 def toggle_on_off(line_num: int, contents: list) -> list:
+    if line_num is None:
+        raise ValueError("toggleOffTouchpad line not found in config")
     toggle = contents[line_num]
     leading_spaces = len(toggle) - len(toggle.lstrip())
     indent = "" * leading_spaces
