@@ -8,10 +8,12 @@ This script modifies the niri configuration file (`~/.config/niri/config.kdl`) t
 
 
 Your niri config should have a touchpad section that looks like this:
+```
 input touchpad {
     // off // toggleOffTouchpad
     // ... other settings
 }
+```
 This script looks for the specific inline comment // toggleOffTouchpad to identify the line to modify. Make sure this comment exists in your config file.
 
 ## Installation
