@@ -2,7 +2,7 @@
 """
 Toggle is a script wrote for the niri WM that can be easily bound to a keybinding.
 Its sole purpose is to toggle on and off a setting that disables or enables the touchpad of the users
-laptop. The script looks for a inline comment '// toggleOffTouchpad' that mut be manually wrote by the
+laptop. The script looks for an inline comment '// toggleOffTouchpad' that mut be manually wrote by the
 user in '~/.config/niri/config.kdl'.
 Author: Dennis Rostron.
 Date: 20/10/2025
@@ -39,7 +39,7 @@ def open_config(path: Path) -> tuple[list[str], int | None]:
 
     :raises FileNotFoundError: If the path does not exist.
     :raises ValueError: If config.kdl is not found.
-    :raises PermissionError: if user lacks r/w/x permissions.
+    :raises PermissionError: If user lacks r/w/x permissions.
     """
     if not path.exists():
         raise FileNotFoundError(f"Config file not found at location: {path}")
@@ -68,7 +68,6 @@ def write_config(path: Path, config: list) -> None:
     :param path: The path to niri configuration file.
     :type path: Path
     :param config: Our newly written configuration file.
-    :type: list
     """
     with open(path, "w") as f:
         for line in config:
@@ -89,7 +88,7 @@ def toggle_on_off(line_num: int, contents: list) -> list:
     """
     toggle = contents[line_num]
     leading_spaces = len(toggle) - len(toggle.lstrip())
-    indent = "" * leading_spaces
+    indent = " " * leading_spaces
     if "// off // toggleOffTouchpad" in toggle:
         toggle = f"{indent}off // toggleOffTouchpad\n"
     else:
